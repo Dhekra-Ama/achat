@@ -46,7 +46,7 @@ pipeline {
                      
                       steps {
 			      script{
-			    sh "docker build -t dhekraamamou/achat:latest"
+			    sh "docker build -t dhekraamamou/achat:latest ."
 			    
 			   }
                          
