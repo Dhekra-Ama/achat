@@ -45,9 +45,8 @@ pipeline {
         stage('Build Docker Image') { 
                      
                       steps {
-			   withDockerRegistry([credentialsId: "dockerToken", url: ""]) {
-			   echo "result"
-			    sh "docker build -t dhekraamamou/achat:latest ."
+			      script{
+			    sh "docker build -t dhekraamamou/achat."
 			    
 			   }
                          
