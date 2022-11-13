@@ -37,7 +37,8 @@ pipeline {
 	                   }
 	            }
 
-
+*/
+		  
 	       stage("SRC Analysis Testing") {
             steps {
                  withSonarQubeEnv('SonarQube_MED'){
@@ -46,7 +47,7 @@ pipeline {
 
         }
 
-*/
+
             stage('JUnit/Mockito'){
                 steps {
                 sh 'mvn test'
@@ -54,14 +55,14 @@ pipeline {
                 }
             }
 
-/*
+
              stage("NEXUS") {
         	    steps {
 		        sh 'mvn clean deploy -DskipTests'
                       }
                 }
 
-*/
+
              stage("DockerBuild") {
                 steps {
                 sh '''
