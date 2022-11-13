@@ -39,9 +39,9 @@ pipeline {
 
 */
 		  
-	       stage("SRC Analysis Testing") {
+	       stage("SonarQube Analysis") {
             steps {
-                 withSonarQubeEnv('SonarQube_MED'){
+                 withSonarQubeEnv('med'){
                 sh "mvn sonar:sonar"}
             }
 
