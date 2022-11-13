@@ -54,11 +54,7 @@ pipeline {
                           
 		      }}
                   
-        stage('login dockerhub') {
-                steps {
-                sh 'echo dckr_pat_tSlM_eIR_iND8wXdSwx_8Lu1MH4 | docker login -u dhekraamamou --password-stdin'
-                  }
-		  }
+       
 		  stage('Push Docker Image') {
                                         steps {
                                    sh 'docker push dhekraamamou/achat:latest'
