@@ -47,7 +47,7 @@ pipeline {
                       steps { 
 			  
 			     
-			    sh 'docker build -t dhekraamamou/achat  .'
+			    sh 'docker build -t achat  .'
 			    
 			   
 		      }
