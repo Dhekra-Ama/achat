@@ -47,7 +47,7 @@ pipeline {
                       steps { 
 			   withDockerRegistry([credentialsId: "dockerToken", url: ""]) {
 			     
-			    sh "docker build -t dhekraamamou/achat:latest ."
+			    sh "docker build -t dhekraamamou/achat:$BUILD_NUMBER ."
 			    
 			   }
 		      }
