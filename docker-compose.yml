@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     environment:
     MYSQL_DATABASE: achatdb
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 
     volumes:
       - /home/mysql/data:/var/lib/mysql
   spring_app:
