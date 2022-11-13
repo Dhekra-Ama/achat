@@ -60,11 +60,6 @@ pipeline {
 		  }
         
         
-         stage("Sonar") {
-            steps {
-               sh ' mvn clean deploy -DskipTests'
-            }
-        }
         
        
         
