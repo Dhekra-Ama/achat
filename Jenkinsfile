@@ -65,8 +65,7 @@ pipeline {
 
              stage("DockerBuild") {
                 steps {
-                sh '''
-                docker build -t mouhamedbannour/achat:latest .'''
+                sh 'docker build -t mouhamedbannour/achat:latest .'
                 }
                 }
 
@@ -81,6 +80,16 @@ pipeline {
                  sh 'docker push mouhamedbannour/achat:latest'
                 }
                 }
+		  
+              stage('DOCKER COMPOSE STAGE'){
+                steps{
+                    script{
+                        sh 'docker-compose up -d '
+                    }
+                   
+                }
+               
+            }
 
             
 
