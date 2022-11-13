@@ -38,13 +38,15 @@ pipeline {
         }
         
         stage('Build Docker Image') { 
-                      agent any
+                     
                       steps {
+			    withDockerRegistry([credentialsId: "dockerToken", url: ""]) {
+			    sh "docker build -t dhekraamamou/achat:$BUILD_NUMBER ."
+			    
+		    }
                          
-                            sh 'docker build -t dhekraamamou/achat:latest .'
-                         
-                      }
-                  }
+                          
+		      }}
                   
         stage('login dockerhub') {
                 steps {
