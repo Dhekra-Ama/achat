@@ -45,11 +45,12 @@ pipeline {
         stage('Build Docker Image') { 
                      
                       steps { 
-			   
+			   withDockerRegistry([credentialsId: "dockerToken", url: ""]) {
 			     
 			    sh "docker build -t dhekraamamou/achat:latest ."
 			    
 			   }
+		      }
                          
                           
 		      }
