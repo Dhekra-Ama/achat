@@ -3,201 +3,55 @@ package tn.esprit.rh.achat.services;
 
 
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import static org.mockito.ArgumentMatchers.anyInt;
-
-import static org.mockito.ArgumentMatchers.anyLong;
-
-import static org.mockito.ArgumentMatchers.anyString;
-
-import static org.mockito.Mockito.times;
-
-import static org.mockito.Mockito.verify;
-
-import static org.mockito.Mockito.when;
-
-
-import java.util.Arrays;
-
-import java.util.List;
-
-import java.util.Optional;
-
-
-import org.assertj.core.api.Assertions;
-
-import org.junit.jupiter.api.Test;
-
-import org.mockito.BDDMockito;
-
-import org.mockito.Mockito;
-
+import static org.junit.Assert.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.boot.test.context.SpringBootTest;
-
-import org.springframework.boot.test.mock.mockito.MockBean;
-
+import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.rh.achat.entities.Stock;
 
-import tn.esprit.rh.achat.repositories.StockRepository;
+import java.util.List;
 
-import tn.esprit.rh.achat.services.StockServiceImpl;
-
-
-
-
-
+@RunWith(SpringRunner.class)
 @SpringBootTest
-
 public class StockServiceTest {
-	@MockBean
-
-	StockRepository repo;
-
-	
-
 	@Autowired
-
-	StockServiceImpl srvce;
-
+	IStockService stockService;
 	
-
-	
-
 	@Test
-
-	 void TestretrieveAllStocks()
-
-	{
-
-		Stock stock1 = new Stock("TestMock1",10,2);
-
-		Stock stock2= new Stock("TestMock2",4,1);
-
-		Stock stock3 = new Stock("TestMock3",100,85);
-
-		List<Stock> stocks = Arrays.asList(stock1,stock2,stock3) ;
-
+	public void testAddStock() {
+		List<Stock> stocks = stockService.retrieveAllStocks();
+		int expected=stocks.size();
+		Stock s = new Stock("stock test",10,100);
+		Stock savedStock= stockService.addStock(s);
 		
-
-		//ngolo biha le repo traje3li data li f list stocks l 3malnha statique
-
-		BDDMockito.given(repo.findAll()).willReturn(stocks);
-
+		assertEquals(expected+1, stockService.retrieveAllStocks().size());
+		assertNotNull(savedStock.getLibelleStock());
+		stockService.deleteStock(savedStock.getIdStock());
 		
+	} 
+	
+	@Test
+	public void testAddStockOptimized() {
 
-		//test
-
-		assertThat(srvce.retrieveAllStocks()).hasSize(3).contains(stock1,stock2,stock3);
-
+		Stock s = new Stock("stock test",10,100);
+		Stock savedStock= stockService.addStock(s);
+		assertNotNull(savedStock.getIdStock());
+		assertSame(10, savedStock.getQte());
+		assertTrue(savedStock.getQteMin()>0);
+		stockService.deleteStock(savedStock.getIdStock());
 		
-
+	} 
+	
+	@Test
+	public void testDeleteStock() {
+		Stock s = new Stock("stock test",30,60);
+		Stock savedStock= stockService.addStock(s);
+		stockService.deleteStock(savedStock.getIdStock());
+		assertNull(stockService.retrieveStock(savedStock.getIdStock()));
 	}
 
-	@Test
-
-	 void TestretrieveStock()
-
-	{
-
-		Stock stock1 = new Stock(1L,"TestMock1",10,2,null);
-
-		BDDMockito.given(repo.findById(anyLong())).willReturn(Optional.ofNullable(stock1));
-
-		Stock result = srvce.retrieveStock(1L);
-
-		assertThat(result.getLibelleStock()).containsIgnoringCase("TestMock"); 	 	
-
-	}
-
-	
-
-	@Test
-
-	 void TestaddStock()
-
-	{
-
-		Stock stock = new Stock(1L,"addStock",100,50,null);
-
-		when(repo.save(stock)).thenReturn(stock);
-
-		assertEquals(stock, srvce.addStock(stock));
-
-	}
-
-	
-
-	@Test
-
-	 void TestupdateStock()
-
-	{
-
-		Stock stock = new Stock(1L,"addStock",100,50,null);
-
-		when(repo.save(stock)).thenReturn(stock);
-
-		stock.setLibelleStock("updatestok");
-
-		stock.setQte(90);
-
-		assertEquals(stock, srvce.updateStock(stock));
-
-	}
-
-	
-
-	
-
-	/*
-
-	@Test
-
-	 void TestdeleteStock()
-
-	{
-
-		Stock stock = new Stock(1L,"addStock",100,50);
-
-		BDDMockito.given(repo.findById(anyLong())).willReturn(Optional.ofNullable(stock));
-
-		srvce.deleteStock(stock.getIdStock());
-
-		assertEquals(stock, srvce.deleteStock(stock.getIdStock()));
-
-	}
-
-	*/
-
-	
-
-	
-
-	@Test
-
-	void TestretrieveStatusStock ()
-
-	{}
-
-	
-
-
-	
-
-	
-
-	
-
-	
-
-	
 
 }
