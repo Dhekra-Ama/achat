@@ -31,6 +31,7 @@ pipeline {
                sh 'mvn clean deploy -DskipTests'
             }
        
+        }
         
         stage("Sonar") {
             steps {
@@ -40,7 +41,6 @@ pipeline {
             }
         }
 	   
-        }
         
 	     stage('login dockerhub') {
                 steps {
