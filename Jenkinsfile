@@ -6,6 +6,14 @@ pipeline {
         maven 'M2_HOME'
         
     }
+    
+    
+    stage("Build") {
+            steps {
+                sh "mvn -version"
+                sh "mvn clean compile -DskipTests"
+            }
+        }
 
 
     stages {
