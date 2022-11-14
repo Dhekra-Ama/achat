@@ -81,7 +81,7 @@ pipeline {
                 }
                 }
 		  
-              stage('DOCKER COMPOSE STAGE'){
+           /*   stage('DOCKER COMPOSE STAGE'){
                 steps{
                     script{
                         sh 'docker-compose up -d '
@@ -89,7 +89,7 @@ pipeline {
                    
                 }
                
-            }
+            }*/
 
             
 
