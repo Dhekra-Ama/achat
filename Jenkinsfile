@@ -91,11 +91,11 @@ pipeline {
     post {
 	    agent any
     stages {
-        stage('Hello') {
+        
             steps {
                 echo "Hello world"
                     }
-            }
+            
         }
  
         always{
