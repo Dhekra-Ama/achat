@@ -25,6 +25,12 @@ pipeline {
                 sh "mvn clean compile -DskipTests"
             }
         }
+	    
+	    stage('Tests') {
+            steps{
+               		 sh "mvn test "
+            }
+        }
        
          stage("nexus") {
             steps {
