@@ -89,7 +89,7 @@ pipeline {
    
    
     post {
-	    agent any
+	   
     success{
 		mail bcc: '', body: '''Dear Dhekra, 
 we are happy to inform you that your pipeline build was successful. 
