@@ -90,12 +90,23 @@ pipeline {
    
     post {
 	    agent any
-    stages {
- 
-        always{
-            mail to: "dhekra.amamou@esprit.tn",
-            subject: "Test Email",
-            body: "Test"
+    success{
+		mail bcc: '', body: '''Dear Dhekra, 
+we are happy to inform you that your pipeline build was successful. 
+Great work ! 
+-Jenkins Team-''', cc: '', from: 'dhekra.amamou@esprit.tn', replyTo: '', subject: 'Build Finished - Success', to: 'dhekra.amamou@esprit.tn'
+		}
+		
+		failure{
+mail bcc: '', body: '''Dear Dhekra, 
+we are sorry to inform you that your pipeline build failed. 
+Keep working ! 
+-Jenkins Team-''', cc: '', from: 'dhekra.amamou@esprit.tn', replyTo: '', subject: 'Build Finished - Failure', to: 'dhekra.amamou@esprit.tn'
+		}
+
+        always {
+		emailext attachLog: true, body: '', subject: 'Build finished',from: 'dhekra.amamou@esprit.tn' , to: 'dhekra.amamou@esprit.tn'
+            cleanWs()
         }
     }
     
