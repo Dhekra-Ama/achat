@@ -104,10 +104,7 @@ Keep working !
 -Jenkins Team-''', cc: '', from: 'dhekra.amamou@esprit.tn', replyTo: '', subject: 'Build Finished - Failure', to: 'dhekra.amamou@esprit.tn'
 		}
 
-        always {
-		emailext attachLog: true, body: '', subject: 'Build finished',from: 'dhekra.amamou@esprit.tn' , to: 'dhekra.amamou@esprit.tn'
-            cleanWs()
-        }
+        
     
     
 
