@@ -29,13 +29,19 @@ pipeline {
         
        
         
-        stage("Nexus") {
+        stage("Sonar") {
             steps {
-                withSonarQubeEnv('DhekraSonar') {
-                sh "mvn sonar:sonar" 
-                }
+                {
+                sh "mvn sonar:sonar -Dsonar.projectKey=cicdback -Dsonar.host.url=http://http://192.168.33.10:9000 -Dsonar.login="8e96287bddef26bab81173a6d2b4fbe1350d3b72" 
+                
             }
         }
+	    stage("nexus") {
+            steps {
+               sh ' mvn clean deploy -DskipTests'
+            }
+        }
+        
 	     stage('login dockerhub') {
                 steps {
                       sh 'docker login -u dhekraamamou --password dckr_pat_tSlM_eIR_iND8wXdSwx_8Lu1MH4'
