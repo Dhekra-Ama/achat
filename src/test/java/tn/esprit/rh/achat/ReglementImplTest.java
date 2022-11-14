@@ -23,7 +23,7 @@ public class ReglementImplTest {
 	public void testAddReglement() {
 		List<Reglement> Reglements = ReglementService.retrieveAllReglements();
 		int expected=Reglements.size();
-		Reglement s = new Reglement(7L, 50,45,false, null, null);
+		Reglement s = new Reglement(17L, 50,45,false, null, null);
 		Reglement savedReglement= ReglementService.addReglement(s);
 
 		assertEquals(expected+1, ReglementService.retrieveAllReglements().size());
