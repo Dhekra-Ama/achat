@@ -89,9 +89,20 @@ pipeline {
    
    
     post {
-        always {
-            cleanWs()
+	    agent any
+    stages {
+        stage('Hello') {
+            steps {
+                echo "Hello world"
+                    }
+            }
+        }
+ 
+        always{
+            mail to: "naivetechblog@gmail.com",
+            subject: "Test Email",
+            body: "Test"
         }
     }
     
-}
+
