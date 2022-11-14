@@ -91,15 +91,9 @@ pipeline {
     post {
 	    agent any
     stages {
-        
-            steps {
-                echo "Hello world"
-                    }
-            
-        }
  
         always{
-            mail to: "naivetechblog@gmail.com",
+            mail to: "dhekra.amamou@esprit.tn",
             subject: "Test Email",
             body: "Test"
         }
