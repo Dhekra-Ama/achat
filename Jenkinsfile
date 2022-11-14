@@ -31,7 +31,7 @@ pipeline {
         
         stage("Sonar") {
             steps {
-                {
+                
                 sh "mvn sonar:sonar -Dsonar.projectKey=cicdback -Dsonar.host.url=http://http://192.168.33.10:9000 -Dsonar.login="8e96287bddef26bab81173a6d2b4fbe1350d3b72" 
                 
             }
