@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.StockRepository;
-import org.junit.Test;
-import org.mockito.Mock;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
