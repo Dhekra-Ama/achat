@@ -26,7 +26,10 @@ pipeline {
             }
         }
        
-        
+         stage("nexus") {
+            steps {
+               sh 'mvn clean deploy -DskipTests'
+            }
        
         
         stage("Sonar") {
@@ -36,10 +39,7 @@ pipeline {
                 
             }
         }
-	    stage("nexus") {
-            steps {
-               sh 'mvn clean deploy -DskipTests'
-            }
+	   
         }
         
 	     stage('login dockerhub') {
