@@ -8,15 +8,17 @@ pipeline {
     }
     
     
-    stage("Build") {
+  
+
+
+    stages {
+        
+          stage("Build") {
             steps {
                 sh "mvn -version"
                 sh "mvn clean compile -DskipTests"
             }
         }
-
-
-    stages {
         stage ('GIT') {
             steps {
                echo "Getting Project from Git"; 
