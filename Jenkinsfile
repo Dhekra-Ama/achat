@@ -19,12 +19,7 @@ pipeline {
         
        
        
-        stage("Build") {
-            steps {
-                sh "mvn -version"
-                sh "mvn clean compile -DskipTests"
-            }
-        }
+
 	    
 	    stage('Tests') {
             steps{
