@@ -108,7 +108,7 @@ Keep working !
 		emailext attachLog: true, body: '', subject: 'Build finished',from: 'dhekra.amamou@esprit.tn' , to: 'dhekra.amamou@esprit.tn'
             cleanWs()
         }
-    }
+    
     
 
 }
