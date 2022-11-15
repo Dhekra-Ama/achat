@@ -99,9 +99,10 @@
                     </excludes>
                 </configuration>
             </plugin>
-
+            
         </plugins>
         
+<finalName> achat1</finalName>
     </build>
 
 </project>
