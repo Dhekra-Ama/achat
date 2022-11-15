@@ -1,4 +1,5 @@
-FROM openjdk
-ONBUILD ADD target/tn/esprit/rh/achat/1.0/achat-1.0.jar achat.jar
+
+FROM openjdk:11
 EXPOSE 8089
-CMD ["java", "-jar", "achat.jar"]
+ADD target/achat-1.0.jar achat-1.0.jar
+ENTRYPOINT ["java", "-jar", "/achat-1.0.jar"]
