@@ -34,13 +34,12 @@ pipeline{
             }
         }
         
-        
-        stage('Junit Testing'){
-            steps{
-            sh 'echo "Junit Test is processing ...."'
-            sh "mvn test"
-            }
+        stage('Test Produit') {
+        steps{
+            sh'mvn test -Dtest=ProduitTest test '
         }
+        }
+      
 
         stage('MVN SONARQUBE'){
             steps{
