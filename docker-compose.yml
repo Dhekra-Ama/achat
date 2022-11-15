@@ -24,13 +24,7 @@ services:
             - MYSQL_DATABASE=tpachat
         volumes:
             - "db_volume:/var/lib/mysql"   
-  
-    frontend:
-        image: dhekraamamou/frontenddevops
-        depends_on:
-            - backend
-        ports:
-            - "4200:80"
+ 
             
 volumes:
   db_volume: {}
